@@ -1,10 +1,10 @@
-# require a delimeter as word length can be double digit.
+# require a delimiter as word length can be double-digit.
 class Solution:
-    delimeter = '#'
+    delimiter = '#'
     def encode(self, strs: List[str]) -> str:
         ret = ""
         for word in strs:
-            ret += f"{len(word)}{self.delimeter}{word}"
+            ret += f"{len(word)}{self.delimiter}{word}"
         return ret
 
     def decode(self, s: str) -> List[str]:
@@ -13,7 +13,7 @@ class Solution:
         ret = []
         k = 0
         while k < len(s):
-            while s[k] != self.delimeter:
+            while s[k] != self.delimiter:
                 print(s[k])
                 cur_length *= 10
                 cur_length += int(s[k])
