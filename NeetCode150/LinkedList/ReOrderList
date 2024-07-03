@@ -1,0 +1,44 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reorderList(self, head: Optional[ListNode]) -> None:
+        """
+        Do not return anything, modify head in-place instead.
+        """
+        # slow fast pointer to get to midPoint
+
+        #from midPoint add all nodes to end into a stack then pop out of stack and build from start of head
+        slow = head
+        fast = head.next
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        
+        # at mid can either add to a stack or reverse linked list starting from slow.next
+        topHalf = []
+        temp = slow
+        slow = slow.next
+        while slow:
+            topHalf.append(slow)
+            slow = slow.next
+        temp.next = None
+        
+        dummy = head
+        build = dummy 
+        while topHalf:
+            end = topHalf.pop()
+            temp1 = end.next
+            temp2 = build.next 
+        
+            build.next = end
+            end.next = temp2
+
+            build = temp2
+        
+        return dummy
+
+        
